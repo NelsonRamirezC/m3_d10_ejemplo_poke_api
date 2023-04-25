@@ -11,7 +11,7 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <script defer src="./assets/js/script.js"></script>
+    <script defer type="module" src="./assets/js/script.js"></script>
     <title>Pokémones</title>
 </head>
 
@@ -37,13 +37,14 @@
                 <div class="card mb-3" style="max-width: 80%;">
                     <div class="row g-0">
                         <div class="col-4">
-                            <img src="https://picsum.photos/id/684/600/400" class="img-fluid rounded-start" alt="...">
+                            <img src="./assets/img/default_pokemon.jpg" class="img-fluid rounded-start"
+                                alt="Default pokémon">
                         </div>
                         <div class="col-8">
                             <div class="card-body">
-                                <h5 class="card-title" id="infoNombre">Card title</h5>
-                                <p class="card-text">Tipo pokémon: <span id="infoTipo"></span></p>
-                                <button class="btn btn-primary" id="btnAgregarPokemon" data-id="1">Agregar</button>
+                                <h5 class="card-title" id="infoNombre"></h5>
+                                <p class="card-text">Tipo pokémon: <span id="infoTipo">Por definir</span></p>
+                                <button class="btn btn-primary" id="btnAgregarPokemon">Agregar</button>
                             </div>
                         </div>
                     </div>
@@ -64,6 +65,8 @@
                             <th scope="col">N° Pokedex</th>
                             <th scope="col">Pokémon</th>
                             <th scope="col">Tipo</th>
+                            <th scope="col">Eliminar</th>
+
                         </tr>
                     </thead>
                     <tbody>

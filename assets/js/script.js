@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
+
 let forBusqueda = document.querySelector("#formularioBusqueda form");
 let btnAgregar = document.getElementById("btnAgregarPokemon");
 let currentPokemon = "";
@@ -5,6 +7,7 @@ let arrayPokemones = [];
 
 class Pokemon {
     constructor(pokedex, nombre, tipo, imagen) {
+        this.id = uuidv4().slice(0, 6);
         this.pokedex = pokedex;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -25,6 +28,7 @@ forBusqueda.addEventListener("submit", async function (event) {
             sprites.front_default
         );
         currentPokemon = pokemon;
+        console.log(pokemon);
         mostrarPokemon(pokemon);
     } else {
         alert(respuesta.message);
@@ -58,7 +62,6 @@ function mostrarPokemon(pokemon) {
     imagen.setAttribute("alt", pokemon.nombre);
     document.getElementById("infoNombre").innerText = pokemon.nombre;
     document.getElementById("infoTipo").innerText = pokemon.tipo;
-    btnAgregar.setAttribute("data-id", pokemon.pokedex);
 }
 
 btnAgregar.addEventListener("click", function () {
@@ -80,6 +83,11 @@ function cargarTabla(pokemones) {
               <td>${pokemon.pokedex}</td>
               <td>${pokemon.nombre}</td>
               <td>${pokemon.tipo}</td>
+              <td><button class="btn btn-danger" data-id="${
+                  pokemon.id
+              }" onclick="eliminarPokemon('${
+            pokemon.id
+        }')">Eliminar</button></td>
             </tr>
         
         `;
@@ -103,5 +111,9 @@ function main() {
         cargarTabla(pokemones);
     }
 }
+
+window.eliminarPokemon = function (id) {
+    console.log(id);
+};
 
 main();
